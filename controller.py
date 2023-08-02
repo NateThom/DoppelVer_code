@@ -12,9 +12,9 @@ datasets_save_location = "/home/adebolt/Documents/DoppelgangerVerification/"
 download_save_location = f"{datasets_save_location}Downloads/"
 list_of_names_save_location = f"{datasets_save_location}IndividualGenderCountryOrigin.csv"
 number_of_images_to_download = 10
-# dataCollection.DataCollection(download_save_location, list_of_names_save_location, number_of_images_to_download)
+dataCollection.DataCollection(download_save_location, list_of_names_save_location, number_of_images_to_download)
 
 cca_save_location = f"{datasets_save_location}CCA/"
-# original_to_CCA.CCA_all_images(download_save_location, cca_save_location)
+original_to_CCA.CCA_all_images(download_save_location, cca_save_location)
 
 remove_duplicate_images.remove_dups(datasets_save_location)
