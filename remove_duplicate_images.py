@@ -1,16 +1,14 @@
-from pathlib import Path
+import os
 import shutil
-import csv
-from PIL import Image
-import fastdup
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from tqdm import tqdm
+from pathlib import Path
+from fastdup import create
 
-class remove_dups:
+class RemoveDups:
     def __init__(self, path_to_doppel_datasets):
-        # TODO: Much code goes here
         self.threshold = 0.90
         self.model_name = "vanilla_classification"
 
@@ -64,7 +62,7 @@ class remove_dups:
     def run_fastdup(self):
 
         output_path = f"{self.path_to_doppel_dataset}fastdup_findAndRemoveDups_{self.model_name}_{self.threshold}/"
-        fd = fastdup.create(work_dir=output_path, input_dir=self.destination_path)
+        fd = create(work_dir=output_path, input_dir=self.destination_path)
         if not Path(output_path).exists():
             if self.model_name.split("_")[0] == "vanilla":
                 fd.run(annotations=self.classification_df, threshold=self.threshold)

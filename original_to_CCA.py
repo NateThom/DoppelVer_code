@@ -7,7 +7,7 @@ import cv2
 import os
 
 # euclidan distance between two points
-def trignometry_for_distance(a, b):
+def euclidean_distance(a, b):
     return math.sqrt(((b[0] - a[0]) * (b[0] - a[0])) + ((b[1] - a[1]) * (b[1] - a[1])))
 
 # given an image and a detected face, crops image to be 1.5 times bigger then bounding box of the detected face
@@ -21,14 +21,10 @@ def crop(img, detected_face):
     x2_adjust = x2 + ((x2-x1)//2)
     y2_adjust = y2 + ((y2-y1)//2)
 
-    if x1_adjust < 0:
-        x1_adjust = 0
-    if y1_adjust < 0:
-        y1_adjust = 0
-    if x2_adjust > image_width:
-        x2_adjust = image_width
-    if y2_adjust > image_height:
-        y2_adjust = image_height
+    x1_adjust = max(0, x1_adjust)
+    y1_adjust = max(0, y1_adjust)
+    x2_adjust = min(image_width, x2_adjust)
+    y2_adjust = min(image_height, y2_adjust)
 
     cropped_face = img[y1_adjust:y2_adjust, x1_adjust:x2_adjust]
 
@@ -55,8 +51,8 @@ class CCA_all_images:
 
         self.name_list = os.listdir(self.dataset_path)
         self.parallel_CCA()
-
-    # multi-process CCA method, each process gets 1 image, and saves a new image for each face found
+    
+# multi-process CCA method, each process gets 1 image, and saves a new image for each face found
     def parallel_CCA(self):
 
         for name in self.name_list:
@@ -117,11 +113,11 @@ class CCA_all_images:
                 direction = 1  # rotate inverse direction of clock
 
             # Calculated third point (RED)
-            a = trignometry_for_distance([left_eye_x, left_eye_y],
+            a = euclidean_distance([left_eye_x, left_eye_y],
                                         point_3rd)
-            b = trignometry_for_distance([right_eye_x, right_eye_y],
+            b = euclidean_distance([right_eye_x, right_eye_y],
                                         point_3rd)
-            c = trignometry_for_distance([right_eye_x, right_eye_y],
+            c = euclidean_distance([right_eye_x, right_eye_y],
                                         [left_eye_x, left_eye_y])
             cos_a = (b * b + c * c - a * a) / (2 * b * c)
             angle = (np.arccos(cos_a) * 180) / math.pi
@@ -149,25 +145,11 @@ class CCA_all_images:
         distance_to_left = exp_center_x
         distance_to_right = aligned_width - exp_center_x
 
-        if (distance_to_top > distance_to_bottom):
-            bottom = distance_to_top - distance_to_bottom
-            top = 0
-        elif (distance_to_bottom > distance_to_top):
-            top = distance_to_bottom - distance_to_top
-            bottom = 0
-        else:
-            top = 0
-            bottom = 0
-        if (distance_to_left > distance_to_right):
-            right = distance_to_left - distance_to_right
-            left = 0
-        elif (distance_to_right > distance_to_left):
-            left = distance_to_right - distance_to_left
-            right = 0
-        else:
-            left = 0
-            right = 0
- 
+        top = max(0, distance_to_bottom - distance_to_top)
+        bottom = max(0, distance_to_top - distance_to_bottom)
+        left = max(0, distance_to_right - distance_to_left)
+        right = max(0, distance_to_left - distance_to_right)
+
         centered_image = cv2.copyMakeBorder(aligned_image, top, bottom, left, right, borderType=cv2.BORDER_REPLICATE)
 
         return centered_image

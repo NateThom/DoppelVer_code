@@ -1,20 +1,55 @@
-import dataCollection
+import os
+
+from dataCollection import DataCollection
 import original_to_CCA
 import remove_duplicate_images
 
-# Will create the dataset based on list of names, create head crops of each individual in each image, and remove duplicate images
-# Once this is completed, the user will need to manually remove all remaining images within the dataset
-# Once the dataset is fully cleaned run protocol_creation.py
-# To use this dataset, and protocols, call the premade dataloaders or create your own!
+def main():
+    """
+    - Collects data and downloads images
+    - Converts images to CCA format
+    - Removes duplicate images
+    - User needs to manually remove remaining images within the dataset
+    - Once the dataset is fully cleaned, run protocol_creation.py
+    - To use this dataset and protocols, call the premade dataloaders or create your own!
+    """
+    
+    # Define file locations
+    # base_dir = "/path/to/doppelver/root/"
+    base_dir = "/home/nthom/Documents/DoppelVer/" # Change this to the location of the repository root
+    downloads_dir = os.path.join(base_dir, "Downloads/") # Change this to the location to download the images
+    demographics_file = os.path.join(base_dir, "IndividualGenderCountryOrigin.csv") # Provide the path to the "IndividualGenderCountryOrigin.csv"
+    cca_dir = os.path.join(base_dir, "CCA/")
 
-datasets_save_location = "/home/adebolt/Documents/DoppelgangerVerification/"
-# run this, once this successfully finishes run ViSE_protocol_creation.ipynb
-download_save_location = f"{datasets_save_location}Downloads/"
-list_of_names_save_location = f"{datasets_save_location}IndividualGenderCountryOrigin.csv"
-number_of_images_to_download = 10
-dataCollection.DataCollection(download_save_location, list_of_names_save_location, number_of_images_to_download)
+    # Step 1: Collect data and download images
+    number_of_images_to_save = 2  # Change this to the desired number of images per person
+    try:
+        data_collection = DataCollection(downloads_dir, demographics_file, number_of_images_to_save)
+        data_collection.find_on_internet()
+        data_collection.rename_all_images()
+        correct_count, incorrect_count = data_collection.check_image_count()
+        print("Correct image count:", correct_count)
+        print("Incorrect image count:", incorrect_count)
+        print("Image downloading completed successfully!")
+    except Exception as e:
+        print(f"An error occurred during image downloading: {e}")
+        exit()
 
-cca_save_location = f"{datasets_save_location}CCA/"
-original_to_CCA.CCA_all_images(download_save_location, cca_save_location)
+    # Step 2: Convert images to CCA format
+    try:
+        original_to_CCA.CCA_all_images(downloads_dir, cca_dir)
+        print("CCA of all downloaded images completed successfully!")
+    except Exception as e:
+        print(f"An error occurred during the CCA operation: {e}")
+        exit()
 
-remove_duplicate_images.remove_dups(datasets_save_location)
+    # Step 3: Remove duplicate images
+    try:
+        remove_duplicate_images.RemoveDups(base_dir)
+        print("Removal of duplicates completed successfully!")
+    except Exception as e:
+        print(f"An error occurred during the removal of duplicates: {e}")
+        exit()
+
+if __name__ == "__main__":
+    main()
