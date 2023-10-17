@@ -14,7 +14,7 @@
 
 ## Overview
 
-The **DoppelVer** dataset is a benchmark dataset designed for evaluating and advancing face verification and recognition algorithms. This dataset contains a diverse collection of facial images from various sources, making it suitable for a wide range of face-related computer vision tasks.
+The **DoppelVer** dataset is a benchmark dataset designed for evaluating and advancing face verification and recognition algorithms. This dataset contains a diverse collection of facial images. The identities depicted were selected in pairs of doppelganger identities. A doppelganger is an identity who is highly visually similar to the source identity, such that they might be mistaken for one another.
 
 This README file provides essential information about the dataset, its structure, and instructions on how to use it.
 
@@ -22,19 +22,20 @@ This README file provides essential information about the dataset, its structure
 
 - **Dataset Name**: DoppelVer: A Benchmark for Face Verification
 - **Version**: 1.0
-- **Release Date**: [Insert Release Date]
-- **Number of Subjects**: [Insert Number of Subjects]
-- **Number of Images**: [Insert Total Number of Images]
-- **File Format**: [Specify the file format used, e.g., JPEG, PNG]
+- **Release Date**: 10/17/23
+- **Number of Subjects**: 390
+- **Number of Original Images**: 27,430
+- **Number of Pre-Processed Images**: 27,976
+- **File Format**: JPG
 
 ## Data Description
 
 The DoppelVer dataset includes the following features and attributes:
 
-- [Insert Key Feature 1]: Description of key feature 1.
-- [Insert Key Feature 2]: Description of key feature 2.
-- [Insert Key Feature 3]: Description of key feature 3.
-- [Insert Any Additional Features]: Describe any other relevant attributes or features.
+- Doppelganger pairs: annotation of which identities are doppelgangers to one another.
+- Gender: the identity's gender assigned at birth.
+- Country of Origin: The country in which the individual was born in.
+- Verification Pairs: protocols for evaluating face verification, including paths to two images and a label denoting if the images depict the same of different identities. 
 
 ## Dataset Structure
 
