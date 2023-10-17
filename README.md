@@ -41,6 +41,59 @@ The DoppelVer dataset includes the following features and attributes:
 
 The dataset is organized as follows:
 
+DoppelVer/
+├── README.md
+├── LICENSE
+├── EULA
+├── doppelgangerPairs.csv
+├── DoppelgangerProtocol.csv
+├── ViSEProtocol.csv
+├── Images.zip
+├── Images/
+│ ├── Original_Images/
+│ │ ├── Abigail Spencer/
+│ │ │ ├── 00.jpg
+│ │ │ ├── 01.jpg
+│ │ │ ├── etc.
+│ │ ├── etc./
+│ │ │ ├── 00.jpg
+│ │ │ ├── 01.jpg
+│ │ │ ├── etc.
+│ ├── CCA_Images/
+│ │ ├── Abigail Spencer/
+│ │ │ ├── 00_0.jpg
+│ │ │ ├── 01_0.jpg
+│ │ │ ├── etc.
+│ │ ├── etc./
+│ │ │ ├── 00_0.jpg
+│ │ │ ├── 00_1.jpg
+│ │ │ ├── etc.
+
+- `LICENSE`: The license for use of any code provided in this repository.
+- `EULA`: The license for use of any data provided in the DoppelVer dataset.
+- `DoppelgangerPairs.csv/`: Doppelganger pair annotations.
+- `DoppelgangerProtocol.csv/`: One of two protocols. The Doppelganger protocol uses images of a labeled doppelganger pair as negative samples for verification.
+- `ViSEProtocol.csv/`: One of two protocols. The ViSE protocol uses images which are identified by a deep model as being highly visually similar.
+- `Images.zip/`: A compressed file containing all original images and pre-processed images.
+- `Images/`: The resultant directory after decompressing the Images.zip file.
+## Usage
+
+Intended use cases are provided in our academic paper referenced below. DoppelVer is intended to be used for the evaluation of face recognition models. The dataset does not contain sufficient samples, nor diversity to effectively train face recognition models.
+
+## Citation
+
+If you use the DoppelVer dataset in your work, please cite it as:
+N. Thom, A. DeBolt, L. Brown, E. M. Hand, “DoppelVer: A Benchmark for Face Verification,” International Symposium on Visual Computing, 2023.
+
+## License
+
+This dataset is provided under our end user licence agreement. Please see the [EULA](./EULA) file for more details on usage and redistribution.
+
+---
+
+We hope you find the DoppelVer dataset valuable for your research or application. If you have any questions or need further assistance, please don't hesitate to contact us at nathanthom@nevada.unr.edu or emhand@unr.edu.
+
+
 SETUP TO RUN CODE TO CREATE OUR DATASET FROM SCRATCH(May contain different images, and will be different protocol(same structure)):
 1. Download conda
 2. Create conda enviroment
