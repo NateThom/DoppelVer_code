@@ -1,3 +1,45 @@
+# DoppelVer: A Benchmark for Face Verification
+
+![DoppelVer Dataset](dataset_image.jpg)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Dataset Details](#dataset-details)
+- [Data Description](#data-description)
+- [Dataset Structure](#dataset-structure)
+- [Usage](#usage)
+- [Citation](#citation)
+- [License](#license)
+
+## Overview
+
+The **DoppelVer** dataset is a benchmark dataset designed for evaluating and advancing face verification and recognition algorithms. This dataset contains a diverse collection of facial images from various sources, making it suitable for a wide range of face-related computer vision tasks.
+
+This README file provides essential information about the dataset, its structure, and instructions on how to use it.
+
+## Dataset Details
+
+- **Dataset Name**: DoppelVer: A Benchmark for Face Verification
+- **Version**: 1.0
+- **Release Date**: [Insert Release Date]
+- **Number of Subjects**: [Insert Number of Subjects]
+- **Number of Images**: [Insert Total Number of Images]
+- **File Format**: [Specify the file format used, e.g., JPEG, PNG]
+
+## Data Description
+
+The DoppelVer dataset includes the following features and attributes:
+
+- [Insert Key Feature 1]: Description of key feature 1.
+- [Insert Key Feature 2]: Description of key feature 2.
+- [Insert Key Feature 3]: Description of key feature 3.
+- [Insert Any Additional Features]: Describe any other relevant attributes or features.
+
+## Dataset Structure
+
+The dataset is organized as follows:
+
 SETUP TO RUN CODE TO CREATE OUR DATASET FROM SCRATCH(May contain different images, and will be different protocol(same structure)):
 1. Download conda
 2. Create conda enviroment
