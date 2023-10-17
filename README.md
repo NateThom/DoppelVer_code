@@ -92,7 +92,10 @@ N. Thom, A. DeBolt, L. Brown, E. M. Hand, “DoppelVer: A Benchmark for Face Ver
 
 This dataset is provided under our end user licence agreement.
 
+---
+
 ## Code
+
 SETUP TO RUN CODE TO CREATE OUR DATASET FROM SCRATCH(May contain different images, and will be different protocol(same structure)):
 1. Download conda
 2. Create conda enviroment
