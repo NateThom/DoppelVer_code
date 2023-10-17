@@ -1,6 +1,6 @@
 # DoppelVer: A Benchmark for Face Verification
 
-![DoppelVer Dataset](dataset_image.jpg)
+![DoppelVer Dataset](Doppelganger_ViSE.png)
 
 ## Table of Contents
 
@@ -40,7 +40,7 @@ The DoppelVer dataset includes the following features and attributes:
 ## Dataset Structure
 
 The dataset is organized as follows:
-
+``` bash
 DoppelVer/
 ├── README.md
 ├── LICENSE
@@ -68,7 +68,7 @@ DoppelVer/
 │ │ │ ├── 00_0.jpg
 │ │ │ ├── 00_1.jpg
 │ │ │ ├── etc.
-
+```
 - `LICENSE`: The license for use of any code provided in this repository.
 - `EULA`: The license for use of any data provided in the DoppelVer dataset.
 - `DoppelgangerPairs.csv/`: Doppelganger pair annotations.
