@@ -152,4 +152,4 @@ To run each section of code
 
 ---
 
-We hope you find the DoppelVer dataset valuable for your research or application. If you have any questions or need further assistance, please don't hesitate to contact us at nathanthom@nevada.unr.edu or emhand@unr.edu.
+We hope you find the DoppelVer dataset valuable for your research or application. If you have any questions or need further assistance, please don't hesitate to contact us at nathan.charles.thom@gmail.com or emhand@unr.edu.
